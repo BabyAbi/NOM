@@ -2731,6 +2731,24 @@ inst.GetBehaviorInstanceFromCtor(C3.Behaviors.scrollto);if(!behInst||!behInst.Ge
 'use strict';{const C3=self.C3;C3.Behaviors.scrollto.Exps={}};
 
 
+'use strict';{const C3=self.C3;C3.Behaviors.destroy=class DestroyOutsideLayoutBehavior extends C3.SDKBehaviorBase{constructor(opts){super(opts)}Release(){super.Release()}}};
+
+
+'use strict';{const C3=self.C3;C3.Behaviors.destroy.Type=class DestroyOutsideLayoutType extends C3.SDKBehaviorTypeBase{constructor(behaviorType){super(behaviorType)}Release(){super.Release()}OnCreate(){}}};
+
+
+'use strict';{const C3=self.C3;C3.Behaviors.destroy.Instance=class DestroyOutsideLayoutInstance extends C3.SDKBehaviorInstanceBase{constructor(behInst,properties){super(behInst);this._StartTicking()}Release(){super.Release()}Tick(){const wi=this._inst.GetWorldInfo();const bbox=wi.GetBoundingBox();const layout=wi.GetLayout();if(bbox.getRight()<0||bbox.getBottom()<0||bbox.getLeft()>layout.GetWidth()||bbox.getTop()>layout.GetHeight())this._runtime.DestroyInstance(this._inst)}}};
+
+
+'use strict';{const C3=self.C3;C3.Behaviors.destroy.Cnds={}};
+
+
+'use strict';{const C3=self.C3;C3.Behaviors.destroy.Acts={}};
+
+
+'use strict';{const C3=self.C3;C3.Behaviors.destroy.Exps={}};
+
+
 'use strict';{const C3=self.C3;C3.Behaviors.solid=class SolidBehavior extends C3.SDKBehaviorBase{constructor(opts){super(opts)}Release(){super.Release()}}};
 
 
@@ -2760,19 +2778,26 @@ value){switch(index){case ENABLE:this.SetEnabled(value);break}}GetDebuggerProper
 		C3.Plugins.Sprite,
 		C3.Behaviors.Platform,
 		C3.Behaviors.scrollto,
-		C3.Behaviors.solid
+		C3.Behaviors.destroy,
+		C3.Behaviors.solid,
+		C3.Plugins.Sprite.Cnds.OnDestroyed,
+		C3.Plugins.Sprite.Acts.Spawn
 		];
 	};
 	self.C3_JsPropNameTable = [
 		{TiledBackground: 0},
 		{Platform: 0},
 		{ScrollTo: 0},
+		{ZerstöreAußerhalbVomLayout: 0},
 		{Projektor: 0},
 		{Solid: 0},
 		{Cola: 0},
 		{Sprite: 0},
 		{Sprite2: 0},
-		{Sprite3: 0}
+		{Sprite3: 0},
+		{Sprite4: 0},
+		{Sprite5: 0},
+		{Sprite6: 0}
 	];
 }
 
@@ -2874,7 +2899,7 @@ value){switch(index){case ENABLE:this.SetEnabled(value);break}}GetDebuggerProper
 	}
 
 	self.C3_ExpressionFuncs = [
-
+		() => 0
 	];
 }
 
